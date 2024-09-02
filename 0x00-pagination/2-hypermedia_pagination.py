@@ -59,9 +59,12 @@ class Server:
             - 'page_size': The number of items on the current page.
             - 'page': The current page number.
             - 'data': A list of items on the current page.
-            - 'next_page': The next page number if there are more pages, otherwise None.
-            - 'prev_page': The previous page number if the current page is not the first page, otherwise None.
-            - 'total_pages': The total number of pages based on the dataset size and page size.
+            - 'next_page': The next page number if there are more pages,
+            otherwise None.
+            - 'prev_page': The previous page number if the current page
+            is not the first page, otherwise None.
+            - 'total_pages': The total number of pages based on
+            the dataset size and page size.
         """
         page_data = self.get_page(page, page_size)
         start, end = index_range(page, page_size)
