@@ -33,13 +33,14 @@ class Server:
 
         return self.__dataset
 
-
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
-        Retrieves a subset of data corresponding to a specific page number and size
+        Retrieves a subset of data corresponding to a specific page
+        number and size
 
-        Return: 
-            A list of lists representing the rows of the dataset for the specified page
+        Return:
+            A list of lists representing the rows of the dataset for
+            the specified page
         """
         assert type(page) == int and type(page_size) == int
         assert page > 0 and page_size > 0
