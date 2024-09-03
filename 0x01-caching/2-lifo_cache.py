@@ -21,7 +21,7 @@ class LIFOCache(BaseCaching):
             key (str): The key to be added
             item (any): The value associated with the key.
         """
-        if key is not None and item is not None:
+        if key  None or item is None:
             pass
 
         self.cache_data[key] = item
