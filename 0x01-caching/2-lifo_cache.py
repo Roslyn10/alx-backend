@@ -22,7 +22,7 @@ class LIFOCache(BaseCaching):
             item (any): The value associated with the key.
         """
         if key is not None and item is not None:
-            pass
+            return
 
         self.cache_data[key] = item
         if key in self.order:
