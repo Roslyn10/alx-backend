@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""A class that inherits from BaseCaching"""
+"""A LIFO class that inherits from BaseCaching"""
 
 
 from base_caching import BaseCaching
@@ -21,7 +21,7 @@ class LIFOCache(BaseCaching):
             key (str): The key to be added
             item (any): The value associated with the key.
         """
-        if key or item is None:
+        if key is not None and item is not None:
             pass
 
         self.cache_data[key] = item

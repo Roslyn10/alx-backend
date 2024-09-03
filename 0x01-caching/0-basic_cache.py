@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""A class tha inherts from BaseCaching and is a caching system"""
+"""A Basic class that inherts from BaseCaching"""
 
 
 from base_caching import BaseCaching
@@ -17,7 +17,7 @@ class BasicCache(BaseCaching):
             key (str): The key under which the item will be stored
             item (any): The item to be stored in the cache
         """
-        if key is None or item is None:
+        if key is not None and item is not None:
             pass
         else:
             self.cache_data[key] = item

@@ -1,37 +1,37 @@
 #!/usr/bin/env python3
-"""A FIFO Class that inherits from BaseChaching"""
+"""A class that inherits from BaseCaching"""
 
 
 from base_caching import BaseCaching
+from collections import OrderedDict
 
 
-class FIFOCache(BaseCaching):
-    """A FIFO (First In, First Out) caching system."""
+class LRUCache(BaseCaching):
+    """A LRU (Least Recently Used) caching system."""
 
     def __init__(self):
         """Initializes the cache and the order list to track insertion order"""
         super().__init__()
-        self.order = []
+        self.cache = OrderedDict()
 
     def put(self, key, item):
         """
-        Add an item to the cache using FIFO replacement policy
+        Add an item to the cache using LRU replacement policy
 
         Args:
             key (str): The key to be added
             item (any): The value associated with the key.
         """
-        if key is not None and item is not None:
+        if key or item is None:
             pass
 
-        self.cache_data[key] = item
-        if key not in self.order:
-            self.order.append(key)
+        if key in self.cache:
+            self.cache.move_to_end(key)
+        self.cache[key] = item
 
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            oldest_key = self.order.pop(0)
-            del self.cache_data[oldest_key]
-            print(f"DISCARD: {oldest_key}")
+        if len(self.cache) > BaseCaching.MAX_ITEMS:
+            least_key = self.cache.popitem(last=False)
+            print(f"DISCARD: {least_key}")
 
     def get(self, key):
         """
@@ -44,7 +44,7 @@ class FIFOCache(BaseCaching):
             any : The value associated with the key,
             or None if the key does not exist.
         """
-        if key is not None and key in self.cache_data.keys():
-            return self.cache_data[key]
-        else:
+        if key not in self.cache:
             return None
+        self.cache.move_to_end(key)
+        return self.cache[key]
