@@ -22,7 +22,7 @@ class FIFOCache(BaseCaching):
             item (any): The value associated with the key.
         """
         if key is None or item is None:
-            pass
+            return
 
         self.cache_data[key] = item
         if key not in self.order:
