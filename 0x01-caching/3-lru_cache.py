@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""A class that inherits from BaseCaching"""
+"""A LRU class that inherits from BaseCaching"""
 
 
 from base_caching import BaseCaching
@@ -10,9 +10,9 @@ class LRUCache(BaseCaching):
     """A LRU (Least Recently Used) caching system."""
 
     def __init__(self):
-        """Initializes the cache and the order list to track insertion order"""
+        """Initializes the cache with an OrderedDict"""
         super().__init__()
-        self.cache = OrderedDict()
+        self.cache_data = OrderedDict()
 
     def put(self, key, item):
         """
@@ -22,16 +22,18 @@ class LRUCache(BaseCaching):
             key (str): The key to be added
             item (any): The value associated with the key.
         """
-        if key or item is None:
-            pass
+        if key is None or item is None:
+            return
 
-        if key in self.cache:
-            self.cache.move_to_end(key)
-        self.cache[key] = item
+        if key not in self.cache_data:
+            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+                least_key, _ = self.cache_data.popitem(last=False)
+                print(f"DISCARD: {least_key}")
+        else:
 
-        if len(self.cache) > BaseCaching.MAX_ITEMS:
-            least_key = self.cache.popitem(last=False)
-            print(f"DISCARD: {least_key}")
+            self.cache_data.pop(key)
+
+        self.cache_data[key] = item
 
     def get(self, key):
         """
@@ -44,7 +46,7 @@ class LRUCache(BaseCaching):
             any : The value associated with the key,
             or None if the key does not exist.
         """
-        if key not in self.cache:
+        if key is None or key not in self.cache_data:
             return None
-        self.cache.move_to_end(key)
-        return self.cache[key]
+        self.cache_data.move_to_end(key)
+        return self.cache_data[key]
