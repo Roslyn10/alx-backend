@@ -29,8 +29,8 @@ users = {
 def get_user():
     """Returns the user dictionary or None if no ID is found"""
     user_id = request.args.get('login_as')
-    if user_id is not None:
-        return user_id = int(user_id)
+    if user_id:
+        return users.get(int(user_id))
     return None
 
 
