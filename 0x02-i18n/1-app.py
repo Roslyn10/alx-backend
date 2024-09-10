@@ -8,9 +8,9 @@ from flask_babel import babel
 
 class Config:
     """Configures available languages in the app"""
-LANGUAGES = ["en", "fr"]
-BABEL_DEFAULT_LOCALE = "en"
-BABEL_DEFAULT_TIMEZONE = "UTC"
+    LANGUAGES = ["en", "fr"]
+    BABEL_DEFAULT_LOCALE = "en"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
 app = Flask(__name__)
@@ -24,5 +24,6 @@ def index():
     """The index page"""
     return render_template('1-index.html')
 
-if __name__ =='__main__':
+
+if __name__ == '__main__':
     app.run(debug=True)
