@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 """A simple Flask setup using Babel"""
 
+
 from flask import Flask, render_template, request, g
 from flask_babel import Babel, _
+
 
 class Config:
     """Configures available languages in the app"""
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
+
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -22,6 +25,7 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+
 def get_user():
     """Returns the user dictionary or None if no ID is found"""
     user_id = request.args.get('login_as')
@@ -33,10 +37,12 @@ def get_user():
             return None
     return None
 
+
 @app.before_request
 def before_request():
     """Adds a user to the Flask `g`"""
     g.user = get_user()
+
 
 @babel.localeselector
 def get_locale() -> str:
@@ -46,10 +52,12 @@ def get_locale() -> str:
         return locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
+
 @app.route('/')
 def index():
     """The index page"""
     return render_template('5-index.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
