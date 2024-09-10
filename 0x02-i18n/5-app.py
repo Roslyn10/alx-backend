@@ -30,18 +30,15 @@ def get_user():
     """Returns the user dictionary or None if no ID is found"""
     user_id = request.args.get('login_as')
     if user_id is not None:
-        try:
-            user_id = int(user_id)
-            return users.get(user_id, None)
-        except ValueError:
-            return None
+        return user_id = int(user_id)
     return None
 
 
 @app.before_request
 def before_request():
     """Adds a user to the Flask `g`"""
-    g.user = get_user()
+    user = get_user()
+    g.user = user
 
 
 @babel.localeselector
