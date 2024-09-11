@@ -43,7 +43,12 @@ def before_request():
 
 @babel.localeselector
 def get_locale() -> str:
-    """Determines the best language match with supported languages"""
+    """
+    Determines the best match with supported languages.
+
+    This function checks the 'Accept-Language' header from the request 
+    and matches it with the supported languages defined in the app config.
+    """
     locale = request.args.get('locale')
     if locale in app.config['LANGUAGES']:
         return locale
@@ -57,7 +62,12 @@ def get_locale() -> str:
 
 @app.route('/')
 def index():
-    """The index page"""
+    """
+    The index page to be displayed on the website.
+
+    This function renders the index template which uses translated 
+    strings based on the selected locale.
+    """
     return render_template('6-index.html')
 
 

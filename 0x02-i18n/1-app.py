@@ -21,7 +21,12 @@ babel = Babel(app)
 
 @app.route('/')
 def index():
-    """The index page"""
+    """
+    The index page to be displayed on the website.
+
+    This function renders the index template which uses translated 
+    strings based on the selected locale.
+    """
     return render_template('1-index.html')
 
 
