@@ -18,17 +18,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.16.0\n"
 
+# Title to be translated in English
 msgid "home_title"
 msgstr "Welcome to Holberton"
 
+# Header to be translated in English
 msgid "home_header"
 msgstr "Hello world!"
 
+# Logged in message to be translated in English
 msgid "logged_in_as"
 msgstr "You are logged in as %(username)s."
 
+# Not logged in message to be translated in English
 msgid "not_logged_in"
 msgstr "You are not logged in."
 
+# Message displaying the current time in English
 msgid "current_time_is"
 msgstr "The current time is %(current_time)s."

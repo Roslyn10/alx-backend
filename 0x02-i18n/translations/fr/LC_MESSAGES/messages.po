@@ -18,17 +18,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.16.0\n"
 
+# Title to be translated in French
 msgid "home_title"
 msgstr "Bienvenue chez Holberton"
 
+# Header to be translated in French
 msgid "home_header"
 msgstr "Bonjour monde!"
 
+# logged in message to be translated in French
 msgid "logged_in_as"
 msgstr "Vous êtes connecté en tant que %(username)s."
 
+# Not logged in message to be translated in French
 msgid "not_logged_in"
 msgstr "Vous n'êtes pas connecté."
 
+# Messaage displaying the current time in French
 msgid "current_time_is"
 msgstr "Nous sommes le %(current_time)s."
