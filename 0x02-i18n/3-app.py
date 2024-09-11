@@ -24,7 +24,7 @@ def get_locale() -> str:
     """
     Determines the best match with supported languages.
 
-    This function checks the 'Accept-Language' header from the request 
+    This function checks the 'Accept-Language' header from the request
     and matches it with the supported languages defined in the app config.
     """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
@@ -35,7 +35,7 @@ def index():
     """
     The index page to be displayed on the website.
 
-    This function renders the index template which uses translated 
+    This function renders the index template which uses translated
     strings based on the selected locale.
     """
     return render_template('3-index.html')
