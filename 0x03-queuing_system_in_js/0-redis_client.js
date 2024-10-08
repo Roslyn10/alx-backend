@@ -1,3 +1,5 @@
+// Connects the the Redis server running on the machine
+
 import { createClient } from 'redis';
 
 const client = createClient();
